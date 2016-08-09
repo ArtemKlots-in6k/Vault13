@@ -29,8 +29,12 @@ repositories {
 dependencies {
     compile('org.springframework.boot:spring-boot-starter-web')
     testCompile('org.springframework.boot:spring-boot-starter-test')
+    compile group: 'com.arangodb', name: 'arangodb-java-driver', version: '2.6.10'
+    optional "org.springframework.boot:spring-boot-configuration-processor"
+
 }
 
+compileJava.dependsOn(processResources)
 
 eclipse {
     classpath {
