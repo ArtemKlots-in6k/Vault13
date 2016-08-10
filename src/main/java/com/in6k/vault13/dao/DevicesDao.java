@@ -19,21 +19,20 @@ import java.util.stream.Collectors;
 public class DevicesDao {
     @Autowired
     DatabaseConnector databaseConnector;
-    private ArangoDriver arangoDriver = databaseConnector.getArangoDriver();
 
     public List<Device> getAll() throws ArangoException {
         List<Device> allDevices = new ArrayList<>();
 
         String query = "FOR device IN devices RETURN device";
         Map<String, Object> bindVars = new HashMap<>();
-        DocumentCursor<Device> documentCursor = arangoDriver.executeDocumentQuery(
+        DocumentCursor<Device> documentCursor = databaseConnector.getArangoDriver().executeDocumentQuery(
                 query, bindVars, databaseConnector.getArangoDriver().getDefaultAqlQueryOptions(), Device.class);
 
-        allDevices.addAll(
-                documentCursor.asList()
-                        .stream()
-                        .map(DocumentEntity::getEntity)
-                        .collect(Collectors.toList()));
+        allDevices.addAll(documentCursor.asList()
+                .stream()
+                .map(documentEntity -> new Device(Integer.parseInt(documentEntity.getDocumentKey()),
+                        documentEntity.getEntity().getTitle()))
+                .collect(Collectors.toList()));
         return allDevices;
     }
 
