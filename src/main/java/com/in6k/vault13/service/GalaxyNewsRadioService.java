@@ -1,10 +1,13 @@
 package com.in6k.vault13.service;
 
 import com.arangodb.ArangoException;
-import com.in6k.vault13.dao.GalaxyNewsRadioDao;
+import com.in6k.vault13.dao.QuotesDao;
 import com.in6k.vault13.entity.Quote;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+
+import java.util.List;
+import java.util.Random;
 
 /**
  * Created by bios on 08.08.16.
@@ -12,13 +15,18 @@ import org.springframework.stereotype.Component;
 @Component
 public class GalaxyNewsRadioService {
     @Autowired
-    GalaxyNewsRadioDao galaxyNewsRadioDao;
+    QuotesDao quotesDao;
 
-    public Quote getByKey(String key) throws ArangoException {
-        return galaxyNewsRadioDao.getByKey(key);
+    public Quote getRandomQuote() throws ArangoException {
+        Random randomGenerator = new Random();
+
+        List<Quote> allQuotes = quotesDao.getAll();
+        int randomQuoteNumber = randomGenerator.nextInt(allQuotes.size());
+
+        return allQuotes.get(randomQuoteNumber);
     }
 
     public void insert(String author, String phrase) throws ArangoException {
-        galaxyNewsRadioDao.insert(author, phrase);
+        quotesDao.insert(author, phrase);
     }
 }
