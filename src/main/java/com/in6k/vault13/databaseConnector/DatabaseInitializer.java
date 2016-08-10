@@ -9,7 +9,7 @@ import com.in6k.vault13.entity.Quote;
 import java.util.*;
 
 /**
- * Created by employee on 8/8/16.
+ * Created by Artem Klots on 8/8/16.
  */
 public class DatabaseInitializer {
     public static void main(String[] args) throws ArangoException {

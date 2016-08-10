@@ -5,7 +5,7 @@ import com.arangodb.ArangoDriver;
 import org.springframework.stereotype.Component;
 
 /**
- * Created by employee on 8/8/16.
+ * Created by Artem Klots on 8/8/16.
  */
 @Component
 public class DatabaseConnector {

@@ -14,7 +14,7 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * Created by bios on 08.08.16.
+ * Created by Artem Klots on 08.08.16.
  */
 @Component
 public class QuotesDao {

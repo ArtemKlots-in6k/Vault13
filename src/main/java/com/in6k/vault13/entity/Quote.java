@@ -1,7 +1,7 @@
 package com.in6k.vault13.entity;
 
 /**
- * Created by employee on 8/9/16.
+ * Created by Artem Klots on 8/9/16.
  */
 public class Quote {
     private String author;

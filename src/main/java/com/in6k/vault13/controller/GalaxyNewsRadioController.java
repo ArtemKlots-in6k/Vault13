@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
- * Created by bios on 08.08.16.
+ * Created by Artem Klots on 08.08.16.
  */
 @RestController
 public class GalaxyNewsRadioController {
