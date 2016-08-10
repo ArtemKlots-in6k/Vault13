@@ -1,6 +1,5 @@
 package com.in6k.vault13.dao;
 
-import com.arangodb.ArangoDriver;
 import com.arangodb.ArangoException;
 import com.arangodb.DocumentCursor;
 import com.arangodb.entity.DocumentEntity;
@@ -9,8 +8,10 @@ import com.in6k.vault13.entity.Device;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import java.util.*;
-import java.util.stream.Collectors;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 /**
  * Created by Artem Klots on 8/10/16.
@@ -28,11 +29,12 @@ public class DevicesDao {
         DocumentCursor<Device> documentCursor = databaseConnector.getArangoDriver().executeDocumentQuery(
                 query, bindVars, databaseConnector.getArangoDriver().getDefaultAqlQueryOptions(), Device.class);
 
-        allDevices.addAll(documentCursor.asList()
-                .stream()
-                .map(documentEntity -> new Device(Integer.parseInt(documentEntity.getDocumentKey()),
-                        documentEntity.getEntity().getTitle()))
-                .collect(Collectors.toList()));
+        for (DocumentEntity<Device> documentEntity : documentCursor.asList()) {
+            allDevices.add(new Device(
+                    Integer.parseInt(documentEntity.getDocumentKey()),
+                    documentEntity.getEntity()
+            ));
+        }
         return allDevices;
     }
 
