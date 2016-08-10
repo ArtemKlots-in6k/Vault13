@@ -13,7 +13,7 @@ import java.util.Random;
  * Created by bios on 08.08.16.
  */
 @Component
-public class GalaxyNewsRadioService {
+public class GalaxyNewsRadio {
     @Autowired
     QuotesDao quotesDao;
 
@@ -26,7 +26,4 @@ public class GalaxyNewsRadioService {
         return allQuotes.get(randomQuoteNumber);
     }
 
-    public void insert(String author, String phrase) throws ArangoException {
-        quotesDao.insert(author, phrase);
-    }
 }

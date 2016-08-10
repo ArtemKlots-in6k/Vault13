@@ -2,7 +2,6 @@ package com.in6k.vault13.databaseConnector;
 
 import com.arangodb.ArangoConfigure;
 import com.arangodb.ArangoDriver;
-import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Component;
 
 /**

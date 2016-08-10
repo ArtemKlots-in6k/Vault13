@@ -2,7 +2,7 @@ package com.in6k.vault13.controller;
 
 import com.arangodb.ArangoException;
 import com.in6k.vault13.entity.Quote;
-import com.in6k.vault13.service.GalaxyNewsRadioService;
+import com.in6k.vault13.service.GalaxyNewsRadio;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class GalaxyNewsRadioController {
     @Autowired
-    GalaxyNewsRadioService galaxyNewsRadioService;
+    GalaxyNewsRadio galaxyNewsRadioService;
 
     @RequestMapping("/")
     public String index() throws ArangoException {
